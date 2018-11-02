@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title%}
+	Registration-Sign_In
+{% endblock %}
+
+{% block body%}
+	<h1>Register</h1>
+	<form action = "{{url_for('register')}}" method = "POST">		
+		<div>
+			<input name = "users_name" placeholder = "Enter User's Name">			
+		</div>
+		<div>
+			<input name = "email" type = "email" placeholder = "Enter Email">			
+		</div>
+		<div>
+			<input name = "password" type = "password" placeholder = "Enter Password">			
+		</div>
+		<div>
+			<input type = "submit" value = "Register">
+		</div>
+	</form>
+	<b/>
+	<h1>Sign_In</h1>
+	<form action = "{{url_for('log_in')}}" method = "POST">
+		<div>
+			<input name = "email" type = "email" placeholder = "Enter Email">			
+		</div>
+		<div>
+			<input name = "password" type = "password" placeholder = "Enter Password">			
+		</div>
+		<div>
+			<input type = "submit" value = "Sign In">
+		</div>
+	</form>
+{% endblock %}

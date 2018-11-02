@@ -1,0 +1,6 @@
+Flask
+Flask-Session
+psycopg2
+SQLAlchemy
+
+set DATABASE_URL=postgres://qvlbjtpqmmijub:dc064bc8d031b0a037aa08bd2dea5c51f9a705dbd4bf5e9bd616351764796904@ec2-23-23-80-20.compute-1.amazonaws.com:5432/d8leq47d7jqsnk

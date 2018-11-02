@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title%}
+	Success
+{% endblock %}
+
+{% block body%}
+	<h1>Welcome {{message}}</h1>
+	</br>
+	<h2>Register</h2>
+	<form action = "{{url_for('book_search')}}" method = "POST">		
+		<div>
+			<input name = "isbn" placeholder = "Enter ISBN">			
+		</div>
+		<div>
+			<input name = "title" placeholder = "Enter Title">			
+		</div>
+		<div>
+			<input name = "author" placeholder = "Enter Author's Name">			
+		</div>
+		<div>
+			<input type = "submit" value = "Submit">
+		</div>
+	</form>
+	
+	</br>
+	<a href = {{url_for('logout', msg = 'logged_out')}}>Logout</a>
+{% endblock %}
