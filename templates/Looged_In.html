@@ -5,24 +5,26 @@
 {% endblock %}
 
 {% block body%}
-	<h1>Welcome {{message}}</h1>
+	<h1>Welcome {{user_name}}</h1>
 	</br>
-	<h2>Register</h2>
+	<h2>Search Book</h2>
 	<form action = "{{url_for('book_search')}}" method = "POST">		
 		<div>
 			<input name = "isbn" placeholder = "Enter ISBN">			
 		</div>
+		</br>
 		<div>
 			<input name = "title" placeholder = "Enter Title">			
 		</div>
+		</br>
 		<div>
 			<input name = "author" placeholder = "Enter Author's Name">			
 		</div>
+		</br>
 		<div>
 			<input type = "submit" value = "Submit">
 		</div>
 	</form>
-	
 	</br>
 	<a href = {{url_for('logout', msg = 'logged_out')}}>Logout</a>
 {% endblock %}

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title%}
+	Success
+{% endblock %}
+
+{% block body%}
+	<h1>Book Details</h1>
+		</br>
+		Book Name: {{book.title}}
+		</br>
+		Book ISBN: {{book.isbn}}
+		</br>
+		Book Year: {{book.year}}
+		</br>
+		Book Author: {{book.author}}
+		</br>
+		Book Ratings: {{avg_rating}}
+		</br>
+		Total Ratings: {{rating_count}}
+		</br>
+		{% if message == 'No_Review' %}
+			<form action = "{{url_for('add_review', book_isbn = book.isbn)}}" method = "POST">
+				<div>
+					Review: <input type = "text" name = "review" placeholder = "Enter Review">
+				</div>
+				<div>
+					<input type = "submit" value = "Submit">
+				</div>
+			</form>
+		{% else %}
+			Review: {{review.review}} 
+		{% endif %}
+		</br>
+		{% if message != 'No_Review' %}
+			{{message}}
+		{% endif %}			
+{% endblock %}
+
