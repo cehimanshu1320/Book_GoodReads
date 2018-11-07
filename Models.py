@@ -24,34 +24,34 @@ class Users(db.Model):
 		self.name = name
 		self.email = email
 		self.password = password
-		
+'''	
 	def addReview(self, review, rating):
-		r = Reviews(review = review, rating = rating, user_id = self.id_)
+		r = Reviews(review = review, user_id = self.id_, isbn = Book.getBookIsbn)
 		db.session.add(r)
 		db.session.commit()
-		
+'''		
 class Reviews(db.Model):
 	__tablename__ = "reviews"
 	review_id = db.Column(db.Integer, primary_key = True)
-	user_id = db.Column(db.Integer, nullable = False)
+	user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable = False)
 	review = db.Column(db.String, nullable = True)
-	rating = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable = True)
+	#rating = db.Column(db.Integer, nullable = True)
+	book_isbn = db.Column(db.String, db.ForeignKey("books.isbn"), nullable = False)
 	id_ = 0
 
-	def __init__(self, review, rating):
-		self.user_id = Reviews.id_ + 1
+	def __init__(self, review, user_id, isbn):
+		self.review_id = Reviews.id_ + 1
 		Reviews.id_ += 1
-		#self.id = self.user_id
+		self.user_id = user_id
 		self.review = review
-		self.rating = rating
-'''	
-	def addUser(self):
-		#user = Users(name = name, email = email, password = password)
-		#db.create_all()
-		print(f"id is {Users.id_}")
+		self.book_isbn = isbn
+		#self.rating = rating
+		
+	def addReview(self):
+		#r = Reviews(review = review, user_id = self.id_, isbn = Book.getBookIsbn)
 		db.session.add(self)
 		db.session.commit()
-'''
+
 		
 class Books(db.Model):
 	__tablename__ = "books"
@@ -65,13 +65,15 @@ class Books(db.Model):
 		#db.create_all()
 		db.session.add(self)
 		db.session.commit()
-
+		
 	def __init__(self, isbn, title, author, year):
 		self.isbn = isbn
 		self.title = title
 		self.author = author
 		self.year = year
-		
+	
+	def getBookIsbn(self):
+		return self.isbn
 		
 '''
 CREATE TABLE users
